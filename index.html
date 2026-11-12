@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>ЦАРЬ-ОГУРЕЦ — Артизанальные маринованные огурцы высшей пробы</title>
+  <meta name="description" content="Легендарные хрустящие маринованные огурцы в стеклянных банках. Небольшие крафтовые партии, родниковая вода, дубовый настой и чистый состав.">
+  <meta name="theme-color" content="#07130b">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="ЦАРЬ-ОГУРЕЦ — Хрустящие огурцы как надо">
+  <meta property="og:description" content="Маринуем в стекле по проверенным старинным рецептам. Чистый состав, доставка по городу.">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <!-- Ambient Brine Background Glow -->
+  <div class="ambient-brine-bg" aria-hidden="true"></div>
+
+  <!-- Interactive Water Vibe Canvas (Ripples, Bubbles, Droplets) -->
+  <canvas id="waterCanvas" aria-hidden="true"></canvas>
+
+  <!-- ==================== HEADER ==================== -->
+  <header>
+    <div class="wrap hd">
+      <a href="#top" class="logo">
+        <div class="logo-badge">🥒</div>
+        <div>
+          <span>ЦАРЬ-ОГУРЕЦ</span>
+          <small>Reserve 2026</small>
+        </div>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="#catalog">Каталог</a></li>
+          <li><a href="#showcase">Огурцы 3D</a></li>
+          <li><a href="#why">Почему мы</a></li>
+          <li><a href="#how">Как заказать</a></li>
+          <li><a href="#faq">Доставка & FAQ</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+        </ul>
+      </nav>
+
+      <div class="hd-actions">
+        <!-- Water Vibe Toggle -->
+        <button id="vibeToggle" class="vibe-btn" title="Водный вайб: ВКЛ" aria-label="Переключить водный вайб">💧</button>
+        <!-- Sound Effect Toggle (Web Audio API Synthesizer) -->
+        <button id="soundToggle" class="sound-btn" title="Звук хруста и всплесков (ВЫКЛ)" aria-label="Включить звук хруста">🔇</button>
+        <!-- Cart Button -->
+        <button id="openCartBtn" class="cartbtn" aria-label="Открыть корзину">
+          <span>🛒 Корзина</span>
+          <b id="cartCount">0</b>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== HERO / 3D PICKLE STAGE ==================== -->
+  <main id="top">
+    <section class="hero-stage">
+      <!-- Huge typographic text BEHIND the spinning 3D pickle -->
+      <div class="info-text-behind" aria-hidden="true">
+        <div class="word-giant" id="wordGiant">Х Р У С Т</div>
+        <div class="word-sub" id="wordSub">100% КРИСП · БЕЗ ХИМИИ</div>
+      </div>
+
+      <!-- The 3D Spinning Pickle Viewport -->
+      <div class="pickle-viewport" id="pickleViewport" title="Зажмите и тяните огурец, чтобы крутить в 3D!">
+        <canvas id="pickleCanvas"></canvas>
+      </div>
+
+      <!-- Foreground Info & CTA Buttons -->
+      <div class="wrap hero-content rv">
+        <div class="hero-pill glass-pill">
+          <i>✦</i> Артизанальный засол · Партия свежего сбора
+        </div>
+        <h1 class="hero-title">
+          Хруст, который <em>слышно за версту</em>
+        </h1>
+        <p class="hero-lead">
+          Настоящие маринованные огурцы в стеклянных банках. Кристальная родниковая вода, пряный укроп, дубовый лист и никакого уксусного пережигания.
+        </p>
+
+        <div class="hero-btns">
+          <a href="#catalog" class="btn btn-primary">
+            <span>🥒 Выбрать огурцы</span>
+          </a>
+          <button class="btn btn-ghost" onclick="window.spinPickle(2.5)" title="Раскрутить 3D огурец">
+            <span>⚡ Встряхнуть огурец</span>
+          </button>
+        </div>
+
+        <div>
+          <span class="drag-hint">
+            <span>👆</span> Зажмите мышь или палец, чтобы вращать 3D огурец
+          </span>
+        </div>
+
+        <div class="hero-badges">
+          <span><b>✓</b> Звонкий хруст</span>
+          <span><b>✓</b> Стеклянные банки</span>
+          <span><b>✓</b> Чистый состав</span>
+          <span><b>✓</b> Доставка до двери</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4 PILLARS SHOWCASE ==================== -->
+    <section class="showcase-flow" id="showcase">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <span class="sec-tag">Секрет мастерства</span>
+          <h2 class="sec-title">Четыре правила безупречного вкуса</h2>
+          <p class="sec-desc">Пока вы листаете страницу, наш 3D-огурец демонстрирует текстуру каждого миллиметра.</p>
+        </div>
+
+        <!-- Step 1 -->
+        <div class="flow-step">
+          <div class="flow-card glass rv">
+            <span class="flow-icon">🌿</span>
+            <span class="flow-tag">Правило 01</span>
+            <h3>Калиброванный сбор</h3>
+            <p>Отбираем только плотные огурчики одного размера (до 9 см). Никаких пустот внутри — только плотная хрустящая мякоть.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="flow-step">
+          <div class="flow-card glass rv">
+            <span class="flow-icon">💧</span>
+            <span class="flow-tag">Правило 02</span>
+            <h3>Золотой маринад</h3>
+            <p>Родниковая вода, свежие зонтики укропа, корень хрена, чеснок и дубовый лист, который дарит огурцам ту самую фирменную упругость.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="flow-step">
+          <div class="flow-card glass rv">
+            <span class="flow-icon">🫙</span>
+            <span class="flow-tag">Правило 03</span>
+            <h3>Честное стекло</h3>
+            <p>Банки герметично закрыты твист-офф крышками. Стекло сохраняет чистоту вкуса и экологично на 100%.</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="flow-step">
+          <div class="flow-card glass rv">
+            <span class="flow-icon">❄️</span>
+            <span class="flow-tag">Правило 04</span>
+            <h3>Погребная выдержка</h3>
+            <p>Огурцы созревают в темноте при постоянной температуре +6°C ровно столько, сколько нужно для гармоничного вкуса.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CATALOG ==================== -->
+    <section class="catalog-sec" id="catalog">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <span class="sec-tag">Наш ассортимент</span>
+          <h2 class="sec-title">Фирменный каталог</h2>
+          <p class="sec-desc">Выберите рецепт по душе. Каждая банка наполнена до самого верха отборными хрустящими огурцами.</p>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="filters rv" id="filtersWrap">
+          <button class="filter-btn active" data-filter="all">Все банки</button>
+          <button class="filter-btn" data-filter="hit">🔥 Хиты</button>
+          <button class="filter-btn" data-filter="spicy">🌶️ Острые</button>
+          <button class="filter-btn" data-filter="new">✨ Новинки</button>
+          <button class="filter-btn" data-filter="premium">👑 Премиум</button>
+          <button class="filter-btn" data-filter="sale">🎁 Наборы</button>
+        </div>
+
+        <!-- Grid of products (Rendered dynamically by store.js) -->
+        <div class="products-grid" id="productsGrid"></div>
+      </div>
+    </section>
+
+    <!-- ==================== WHY US ==================== -->
+    <section class="why-sec" id="why">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <span class="sec-tag">Наши преимущества</span>
+          <h2 class="sec-title">Почему нас выбирают гурманы</h2>
+          <p class="sec-desc">Мы не гонимся за миллионными тиражами — для нас важнее звонкий хруст каждой банки.</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feat-item glass rv">
+            <div class="feat-icon">🌱</div>
+            <h4>Чистый состав</h4>
+            <p>Огурцы, чеснок, укроп, дубовый лист, соль, горчичное зерно. Никаких красителей, усилителей вкуса и консервантов.</p>
+          </div>
+          <div class="feat-item glass rv">
+            <div class="feat-icon">🔊</div>
+            <h4>Эталонный хруст</h4>
+            <p>Засолка в день сбора и специальная шоковая родниковая закалка сохраняют клетки огурца упругими.</p>
+          </div>
+          <div class="feat-item glass rv">
+            <div class="feat-icon">🫙</div>
+            <h4>Экологичное стекло</h4>
+            <p>Используем только пищевое стекло. Банки можно вернуть при следующем заказе и получить приятный бонус.</p>
+          </div>
+          <div class="feat-item glass rv">
+            <div class="feat-icon">🚀</div>
+            <h4>Бережная доставка</h4>
+            <p>Доставляем в ударопрочной термоупаковке. Огурцы приедут холодными, прямо к вашему столу.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== HOW TO ORDER ==================== -->
+    <section class="steps-sec" id="how">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <span class="sec-tag">Простой процесс</span>
+          <h2 class="sec-title">Как получить свои огурцы</h2>
+          <p class="sec-desc">Четыре простых шага без регистрации и сложных форм.</p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card glass rv">
+            <h4>Выберите банки</h4>
+            <p>Добавьте понравившиеся вкусы в корзину и выберите нужное количество.</p>
+          </div>
+          <div class="step-card glass rv">
+            <h4>Оформите заказ</h4>
+            <p>Укажите имя, номер телефона и адрес для доставки курьером или самовывоза.</p>
+          </div>
+          <div class="step-card glass rv">
+            <h4>Подтверждение</h4>
+            <p>Заказ автоматически отправится нам в Telegram. Мы свяжемся с вами в течение 10 минут.</p>
+          </div>
+          <div class="step-card glass rv">
+            <h4>Наслаждайтесь</h4>
+            <p>Оплатите при получении наличными или переводом и откройте заветную банку!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== DELIVERY & FAQ ==================== -->
+    <section id="faq">
+      <div class="wrap two-cols">
+        <!-- Delivery info -->
+        <div class="info-box glass rv">
+          <span class="sec-tag">Логистика</span>
+          <h3 style="font-size:26px;margin-bottom:12px">Доставка и оплата</h3>
+          <p style="color:var(--ink-muted)">Быстро привезём по городу или передадим в удобном пункте самовывоза.</p>
+          <ul class="info-list" id="deliveryTermsList"></ul>
+        </div>
+
+        <!-- FAQ Accordion -->
+        <div class="rv">
+          <span class="sec-tag">Частые вопросы</span>
+          <h3 style="font-size:26px;margin-bottom:20px">Отвечаем на главное</h3>
+
+          <details class="glass">
+            <summary>Сколько хранится открытая банка?</summary>
+            <p>В холодильнике открытая банка отлично хранится до 3-4 недель при условии, что огурцы полностью покрыты рассолом. Закрытая банка хранится до 12 месяцев в прохладном тёмном месте.</p>
+          </details>
+
+          <details class="glass">
+            <summary>Какой уксус вы используете в маринаде?</summary>
+            <p>Мы используем натуральный яблочный уксус мягкой ферментации либо лимонную кислоту в деликатных пропорциях. Никакой резкой уксусной горечи — только чистый сбалансированный вкус.</p>
+          </details>
+
+          <details class="glass">
+            <summary>Можно ли заказать оптом для кафе или бара?</summary>
+            <p>Да! Для ресторанов, пабов и кейтеринга у нас есть специальные 3-литровые и 5-литровые банки с оптовыми скидками. Напишите нам в Telegram для спецпрайса.</p>
+          </details>
+
+          <details class="glass">
+            <summary>Что делать с пустой банкой после того, как огурцы съедены?</summary>
+            <p>Рассол рекомендуем выпить (он невероятно вкусен и богат электролитами!), а чистую банку можно вернуть курьеру при следующем заказе и получить скидку 5%.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CONTACTS ==================== -->
+    <section id="contacts">
+      <div class="wrap">
+        <div class="contact-banner glass rv">
+          <div>
+            <span class="sec-tag" style="color:var(--gold-dill)">Связь с создателями</span>
+            <h2 style="font-size:clamp(28px,3.8vw,42px);margin-bottom:12px">Хотите задать вопрос или собрать особый сет?</h2>
+            <p style="color:var(--ink-muted);font-size:16px">Мы на связи каждый день с 9:00 до 21:00. Ответим в Telegram, подскажем по вкусам и быстро сформируем доставку.</p>
+          </div>
+          <div class="contact-links">
+            <a href="https://t.me/cucumber_king" target="_blank" rel="noopener" class="c-link">
+              <span>✈️</span> Telegram: @cucumber_king
+            </a>
+            <a href="tel:+375297778899" class="c-link">
+              <span>📞</span> +375 (29) 777-88-99
+            </a>
+            <a href="https://instagram.com/tsar_ogurets" target="_blank" rel="noopener" class="c-link">
+              <span>📷</span> Instagram: @tsar_ogurets
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <div class="wrap">
+      <p>© 2026 ЦАРЬ-ОГУРЕЦ · Артизанальное производство маринованных огурцов</p>
+      <p style="margin-top:6px;font-size:12px;opacity:0.7">Сделано с любовью к хрусту · Доступно локально на Go сервере и на GitHub Pages</p>
+    </div>
+  </footer>
+
+  <!-- ==================== CART DRAWER ==================== -->
+  <div class="cart-shade" id="cartShade" aria-hidden="true"></div>
+  <aside class="drawer" id="cartDrawer" aria-label="Корзина покупок">
+    <div class="drawer-head">
+      <span>🛒 Ваша корзина</span>
+      <button class="close-btn" id="closeCartBtn" aria-label="Закрыть корзину">✕</button>
+    </div>
+
+    <div class="drawer-body" id="cartItemsList">
+      <!-- Items dynamically populated by store.js -->
+    </div>
+
+    <div class="drawer-foot">
+      <div class="free-progress">
+        <div class="free-bar" id="freeDeliveryBar"></div>
+      </div>
+      <div class="free-text" id="freeDeliveryText"></div>
+
+      <div class="total-row">
+        <span>Итого:</span>
+        <span id="cartTotalSum" style="color:var(--green-glow)">0 BYN</span>
+      </div>
+
+      <button class="btn btn-primary" id="btnToCheckout" style="width:100%">
+        <span>Оформить заказ</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ==================== CHECKOUT MODAL ==================== -->
+  <div class="modal-overlay" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px">
+        <div>
+          <h3 id="modalTitle" style="font-size:24px;font-weight:800">Оформление заказа</h3>
+          <p style="font-size:13px;color:var(--ink-muted)">Заказ отправится нам в Telegram или обработается через Go API</p>
+        </div>
+        <button class="close-btn" id="closeCheckoutBtn" aria-label="Закрыть окно">✕</button>
+      </div>
+
+      <form id="checkoutForm" novalidate>
+        <label class="fld">
+          Ваше имя
+          <input type="text" id="orderName" required placeholder="Например, Александр" autocomplete="name">
+        </label>
+
+        <label class="fld">
+          Номер телефона
+          <input type="tel" id="orderPhone" required placeholder="+375 (__) ___-__-__" autocomplete="tel">
+        </label>
+
+        <label class="fld">
+          Способ получения
+          <select id="orderDeliveryType">
+            <option value="delivery">🚗 Доставка курьером до двери</option>
+            <option value="pickup">🏪 Самовывоз из фирменного погреба (бесплатно)</option>
+          </select>
+        </label>
+
+        <label class="fld" id="addressFieldWrap">
+          Адрес доставки
+          <input type="text" id="orderAddress" placeholder="Город, улица, дом, квартира" autocomplete="street-address">
+        </label>
+
+        <label class="fld">
+          Комментарий к заказу
+          <textarea id="orderComment" rows="2" placeholder="Желаемое время доставки, домофон, пожелания"></textarea>
+        </label>
+
+        <div class="summary-box" id="orderSummaryBox"></div>
+
+        <div class="modal-actions">
+          <button type="submit" class="btn btn-primary" style="width:100%">
+            <span>✈️ Отправить заказ в Telegram</span>
+          </button>
+          <button type="button" class="btn btn-ghost" id="btnCopyOrder" style="width:100%">
+            <span>📋 Скопировать текст заказа</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="./js/water.js"></script>
+  <script src="./js/pickle3d.js"></script>
+  <script src="./js/store.js"></script>
+</body>
+</html>
