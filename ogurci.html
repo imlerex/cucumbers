@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Домашние маринованные огурцы — заказать с доставкой</title>
+<meta name="description" content="Хрустящие маринованные огурцы в стеклянных банках. Небольшие партии, понятный состав, доставка по городу.">
+<style>
+:root{
+  --bg:#fbf8f1;
+  --card:#ffffff;
+  --ink:#1f2a23;
+  --muted:#66736b;
+  --green:#2e7d46;
+  --green-d:#1f5c31;
+  --green-l:#e6f2e9;
+  --dill:#f2b632;
+  --line:#e7e2d4;
+  --radius:16px;
+  --shadow:0 8px 30px rgba(31,42,35,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+h1,h2,h3{line-height:1.15;letter-spacing:-.01em}
+h2{font-size:clamp(26px,4vw,40px);margin-bottom:10px}
+.sub{color:var(--muted);max-width:560px;margin-bottom:36px}
+section{padding:72px 0}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;border-radius:999px;border:2px solid var(--green);background:var(--green);color:#fff;font-weight:600;cursor:pointer;transition:transform .15s,background .2s,box-shadow .2s}
+.btn:hover{background:var(--green-d);border-color:var(--green-d);transform:translateY(-2px);box-shadow:0 8px 20px rgba(46,125,70,.3)}
+.btn:active{transform:none}
+.btn.ghost{background:transparent;color:var(--green)}
+.btn.ghost:hover{background:var(--green-l);box-shadow:none}
+.btn.block{width:100%}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(251,248,241,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.hd{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.logo{font-weight:800;font-size:20px;display:flex;align-items:center;gap:8px}
+.logo i{font-style:normal;display:grid;place-items:center;width:34px;height:34px;background:var(--green);border-radius:10px;font-size:18px}
+nav ul{display:flex;gap:26px;list-style:none;font-size:15px}
+nav a{color:var(--muted);transition:color .2s}
+nav a:hover{color:var(--green)}
+.cartbtn{position:relative;display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;border:2px solid var(--green);background:#fff;font-weight:600;cursor:pointer;transition:.2s}
+.cartbtn:hover{background:var(--green-l)}
+.cartbtn b{min-width:22px;height:22px;display:grid;place-items:center;background:var(--green);color:#fff;border-radius:11px;font-size:12px;padding:0 6px}
+.cartbtn.bump{animation:bump .4s}
+@keyframes bump{40%{transform:scale(1.12)}}
+@media(max-width:760px){nav{display:none}}
+
+/* hero */
+.hero{padding:56px 0 40px}
+.hero-in{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+@media(max-width:860px){.hero-in{grid-template-columns:1fr}}
+.pill{display:inline-block;background:var(--green-l);color:var(--green-d);padding:6px 14px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:18px}
+h1{font-size:clamp(34px,5.6vw,62px);margin-bottom:18px}
+h1 em{font-style:normal;color:var(--green);position:relative;white-space:nowrap}
+h1 em::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:10px;background:var(--dill);opacity:.45;z-index:-1;border-radius:4px;transform-origin:left;animation:ul 1s .5s both}
+@keyframes ul{from{transform:scaleX(0)}}
+.hero p.lead{font-size:18px;color:var(--muted);max-width:520px;margin-bottom:28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px}
+.facts{display:flex;gap:26px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+.facts span::before{content:"✓ ";color:var(--green);font-weight:700}
+.hero-art{position:relative;display:grid;place-items:center;min-height:360px}
+.blob{position:absolute;width:86%;aspect-ratio:1;background:var(--green-l);border-radius:48% 52% 55% 45%/50% 45% 55% 50%;animation:morph 12s ease-in-out infinite}
+@keyframes morph{50%{border-radius:55% 45% 45% 55%/45% 55% 45% 55%;transform:rotate(8deg)}}
+.hero-art svg{position:relative;width:min(300px,70%);animation:fl 6s ease-in-out infinite;filter:drop-shadow(0 20px 24px rgba(31,92,49,.25))}
+@keyframes fl{50%{transform:translateY(-12px) rotate(1.5deg)}}
+.bub{animation:rise 5s linear infinite;fill:#fff;opacity:0}
+@keyframes rise{0%{transform:translateY(0);opacity:0}15%{opacity:.8}100%{transform:translateY(-120px);opacity:0}}
+
+/* products */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.pic{height:190px;display:grid;place-items:center;position:relative;background:var(--green-l)}
+.pic svg{height:150px;transition:transform .35s}
+.card:hover .pic svg{transform:scale(1.08) rotate(-3deg)}
+.pic img{width:100%;height:100%;object-fit:cover}
+.tagb{position:absolute;top:12px;left:12px;background:var(--dill);color:#3a2a00;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px}
+.cb{padding:18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.cb h3{font-size:19px}
+.cb p{font-size:14px;color:var(--muted);flex:1}
+.meta{font-size:13px;color:var(--muted)}
+.row{display:flex;align-items:center;justify-content:space-between;margin-top:6px;gap:10px}
+.price{font-size:22px;font-weight:800}
+.price small{font-size:13px;font-weight:500;color:var(--muted)}
+.add{padding:10px 16px;border-radius:999px;border:2px solid var(--green);background:#fff;color:var(--green);font-weight:600;cursor:pointer;transition:.2s}
+.add:hover{background:var(--green);color:#fff}
+.add.ok{background:var(--green);color:#fff}
+
+/* why */
+.why{background:#fff;border-block:1px solid var(--line)}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}
+.f{padding:22px;border-radius:var(--radius);background:var(--bg);border:1px solid var(--line);transition:.25s}
+.f:hover{transform:translateY(-4px);border-color:var(--green)}
+.f .ic{font-size:30px;margin-bottom:10px}
+.f h3{font-size:18px;margin-bottom:6px}
+.f p{font-size:14px;color:var(--muted)}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;counter-reset:s}
+.st{position:relative;padding:24px 22px 22px;background:#fff;border:1px solid var(--line);border-radius:var(--radius)}
+.st::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--green);color:#fff;font-weight:700;margin-bottom:12px}
+.st h3{font-size:17px;margin-bottom:4px}
+.st p{font-size:14px;color:var(--muted)}
+
+/* delivery / faq */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+@media(max-width:860px){.two{grid-template-columns:1fr}}
+.box{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.box ul{list-style:none;display:grid;gap:10px;font-size:15px}
+.box li::before{content:"•";color:var(--green);font-weight:900;margin-right:8px}
+details{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden}
+summary{cursor:pointer;padding:16px 18px;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:10px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--green);font-size:22px;line-height:1;transition:transform .25s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 18px 16px;color:var(--muted);font-size:15px}
+
+/* contacts */
+.contact{background:var(--green);color:#fff;border-radius:24px;padding:44px;display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center}
+@media(max-width:860px){.contact{grid-template-columns:1fr;padding:28px}}
+.contact h2{color:#fff}
+.contact p{opacity:.9}
+.clist{display:grid;gap:10px}
+.clist a{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.12);padding:14px 18px;border-radius:12px;transition:.2s;font-weight:600}
+.clist a:hover{background:rgba(255,255,255,.22);transform:translateX(4px)}
+footer{padding:30px 0;color:var(--muted);font-size:13px;text-align:center}
+
+/* drawer */
+.shade{position:fixed;inset:0;background:rgba(20,30,24,.45);opacity:0;pointer-events:none;transition:.3s;z-index:90}
+.shade.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100vw);background:var(--bg);z-index:100;transform:translateX(105%);transition:transform .4s cubic-bezier(.3,.8,.3,1);display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(0,0,0,.15)}
+.drawer.open{transform:none}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:20px 22px;border-bottom:1px solid var(--line);font-size:20px;font-weight:700}
+.x{width:36px;height:36px;border-radius:50%;border:none;background:#fff;font-size:22px;cursor:pointer;transition:.2s}
+.x:hover{background:var(--green-l);transform:rotate(90deg)}
+.db{flex:1;overflow:auto;padding:18px 22px}
+.it{display:grid;grid-template-columns:1fr auto;gap:6px 12px;padding:14px 0;border-bottom:1px solid var(--line);animation:in .3s}
+@keyframes in{from{opacity:0;transform:translateX(20px)}}
+.it b{font-size:15px}
+.it small{color:var(--muted)}
+.qty{display:flex;align-items:center;gap:10px;grid-column:1;}
+.qty button{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:16px}
+.qty button:hover{border-color:var(--green);color:var(--green)}
+.it .sum{grid-row:1;grid-column:2;font-weight:700;text-align:right}
+.empty{text-align:center;color:var(--muted);padding:50px 0}
+.df{padding:18px 22px;border-top:1px solid var(--line);background:#fff}
+.tot{display:flex;justify-content:space-between;font-size:18px;font-weight:700;margin-bottom:6px}
+.note{font-size:13px;color:var(--muted);margin-bottom:12px}
+.free{height:6px;background:var(--line);border-radius:6px;overflow:hidden;margin:6px 0 4px}
+.free i{display:block;height:100%;width:0;background:var(--green);transition:width .5s}
+
+/* checkout */
+.modal{position:fixed;inset:0;z-index:120;display:none;place-items:center;padding:16px;background:rgba(20,30,24,.55)}
+.modal.on{display:grid}
+.mbox{background:var(--bg);border-radius:20px;width:min(520px,100%);max-height:92vh;overflow:auto;padding:26px;animation:pop .3s}
+@keyframes pop{from{opacity:0;transform:scale(.95) translateY(10px)}}
+.mbox h3{font-size:22px;margin-bottom:4px}
+.fld{display:grid;gap:5px;margin-top:14px;font-size:14px;font-weight:600}
+.fld input,.fld textarea,.fld select{padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;background:#fff;font-weight:400;outline:none;transition:.2s}
+.fld input:focus,.fld textarea:focus,.fld select:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(46,125,70,.15)}
+.sumbox{background:#fff;border:1px dashed var(--line);border-radius:10px;padding:12px 14px;font-size:14px;margin-top:16px;white-space:pre-line}
+.acts{display:grid;gap:10px;margin-top:16px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,160%);background:var(--ink);color:#fff;padding:12px 22px;border-radius:999px;font-size:14px;z-index:200;transition:transform .4s cubic-bezier(.3,1.4,.4,1)}
+.toast.show{transform:translate(-50%,0)}
+
+/* mobile sticky */
+.fab{display:none}
+@media(max-width:760px){
+  section{padding:52px 0}
+  .contact{padding:26px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap hd">
+    <a href="#top" class="logo"><i>🥒</i><span id="brand">Огурцовъ</span></a>
+    <nav><ul>
+      <li><a href="#catalog">Каталог</a></li>
+      <li><a href="#why">Почему мы</a></li>
+      <li><a href="#how">Как заказать</a></li>
+      <li><a href="#faq">Вопросы</a></li>
+      <li><a href="#contacts">Контакты</a></li>
+    </ul></nav>
+    <button class="cartbtn" id="openCart" aria-label="Открыть корзину">🛒 Корзина <b id="cnt">0</b></button>
+  </div>
+</header>
+
+<main id="top">
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-in">
+    <div class="rv">
+      <span class="pill">Небольшие партии · Свежая заготовка</span>
+      <h1>Хрустящие огурцы <em>как надо</em></h1>
+      <p class="lead">Маринуем в стеклянных банках по проверенному рецепту. Только огурцы, зелень, специи и соль, без лишней химии. Закажите онлайн, привезём или заберёте сами.</p>
+      <div class="cta">
+        <a href="#catalog" class="btn">Выбрать огурцы</a>
+        <a href="#how" class="btn ghost">Как заказать</a>
+      </div>
+      <div class="facts">
+        <span>Состав на этикетке</span>
+        <span>Стеклянные банки</span>
+        <span>Доставка по городу</span>
+      </div>
+    </div>
+    <div class="hero-art rv">
+      <div class="blob"></div>
+      <svg viewBox="0 0 200 260" aria-hidden="true">
+        <rect x="55" y="14" width="90" height="24" rx="6" fill="#2e7d46"/>
+        <rect x="62" y="38" width="76" height="10" fill="#cfe8d6"/>
+        <path d="M50 50 Q30 60 28 90 L28 220 Q28 244 52 244 L148 244 Q172 244 172 220 L172 90 Q170 60 150 50Z" fill="#eaf6ee" stroke="#9ccaa9" stroke-width="3"/>
+        <path d="M32 100 H168 V220 Q168 240 148 240 H52 Q32 240 32 220Z" fill="#a9d98b" opacity=".55"/>
+        <rect x="52" y="90" width="28" height="140" rx="14" fill="#3f9a3c" transform="rotate(-6 66 160)"/>
+        <rect x="88" y="84" width="30" height="150" rx="15" fill="#4aa844" transform="rotate(2 103 160)"/>
+        <rect x="124" y="92" width="26" height="136" rx="13" fill="#3f9a3c" transform="rotate(7 137 160)"/>
+        <g fill="#1f5c31" opacity=".5"><circle cx="62" cy="130" r="2"/><circle cx="98" cy="150" r="2"/><circle cx="108" cy="200" r="2"/><circle cx="136" cy="140" r="2"/><circle cx="68" cy="190" r="2"/></g>
+        <circle cx="45" cy="170" r="4" fill="#f2b632"/><circle cx="158" cy="200" r="4" fill="#f2b632"/>
+        <rect x="62" y="150" width="76" height="46" rx="6" fill="#fffdf6" stroke="#2e7d46" stroke-width="1.5"/>
+        <text x="100" y="170" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="11" fill="#1f5c31">ОГУРЦЫ</text>
+        <text x="100" y="184" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#66736b">маринованные</text>
+        <circle class="bub" cx="50" cy="225" r="3" style="animation-delay:0s"/>
+        <circle class="bub" cx="150" cy="230" r="2.5" style="animation-delay:1.5s"/>
+        <circle class="bub" cx="100" cy="236" r="3.5" style="animation-delay:3s"/>
+        <path d="M44 100 Q40 160 46 220" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none" opacity=".7"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- CATALOG -->
+<section id="catalog">
+  <div class="wrap">
+    <h2 class="rv">Каталог</h2>
+    <p class="sub rv">Выберите вкус и размер банки. Количество можно менять в корзине.</p>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why" class="why">
+  <div class="wrap">
+    <h2 class="rv">Почему у нас берут снова</h2>
+    <p class="sub rv">Мы небольшое производство, поэтому следим за каждой банкой.</p>
+    <div class="feat">
+      <div class="f rv"><div class="ic">🌿</div><h3>Понятный состав</h3><p>Огурцы, вода, соль, укроп, чеснок, специи. Всё указано на этикетке.</p></div>
+      <div class="f rv"><div class="ic">😋</div><h3>Хруст</h3><p>Отбираем плотные огурцы одного размера и маринуем в день заготовки.</p></div>
+      <div class="f rv"><div class="ic">🫙</div><h3>Стеклянные банки</h3><p>Банки герметично закрыты. Пустую можно вернуть или использовать повторно.</p></div>
+      <div class="f rv"><div class="ic">🚚</div><h3>Доставка</h3><p>Привозим по городу в удобное время или отдаём в пункте самовывоза.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section id="how">
+  <div class="wrap">
+    <h2 class="rv">Как заказать</h2>
+    <p class="sub rv">Четыре шага, без регистрации.</p>
+    <div class="steps">
+      <div class="st rv"><h3>Выберите банки</h3><p>Добавьте нужные позиции в корзину.</p></div>
+      <div class="st rv"><h3>Оформите заказ</h3><p>Укажите имя, телефон и адрес или самовывоз.</p></div>
+      <div class="st rv"><h3>Подтвердим</h3><p>Свяжемся в мессенджере и уточним время.</p></div>
+      <div class="st rv"><h3>Получите</h3><p>Оплата при получении или переводом.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERY + FAQ -->
+<section style="padding-top:0">
+  <div class="wrap two">
+    <div class="rv">
+      <h2>Доставка и оплата</h2>
+      <p class="sub">Условия можно изменить под вас, они настраиваются в начале скрипта.</p>
+      <div class="box"><ul id="delList"></ul></div>
+    </div>
+    <div class="rv" id="faq">
+      <h2>Частые вопросы</h2>
+      <p class="sub">Если не нашли ответ, напишите нам.</p>
+      <details><summary>Сколько хранятся огурцы?</summary><p>Закрытую банку храните в прохладном тёмном месте. Срок указан на этикетке. После вскрытия держите в холодильнике и съедайте в течение нескольких недель.</p></details>
+      <details><summary>Что в составе?</summary><p>Огурцы, вода, соль, сахар, укроп, чеснок, лавровый лист, чёрный перец, уксус или лимонная кислота. Точный состав каждой позиции указан на этикетке.</p></details>
+      <details><summary>Можно ли заказать оптом?</summary><p>Да, для кафе, магазинов и мероприятий есть оптовые условия. Напишите нам, обсудим объём и цену.</p></details>
+      <details><summary>Есть ли аллергены?</summary><p>В составе нет орехов и глютена, но на кухне могут использоваться горчица и сельдерей. Если есть аллергия, уточните у нас перед заказом.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTS -->
+<section id="contacts" style="padding-top:20px">
+  <div class="wrap">
+    <div class="contact rv">
+      <div>
+        <h2>Остались вопросы?</h2>
+        <p>Напишите нам — отвечаем быстро, подскажем с выбором и составим заказ вместе.</p>
+      </div>
+      <div class="clist" id="clist"></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">© <span id="yr"></span> <span id="brand2"></span> · Цены и наличие уточняйте при заказе</div></footer>
+
+<!-- CART -->
+<div class="shade" id="shade"></div>
+<aside class="drawer" id="drawer" aria-label="Корзина">
+  <div class="dh"><span>Корзина</span><button class="x" id="closeCart" aria-label="Закрыть">×</button></div>
+  <div class="db" id="items"></div>
+  <div class="df">
+    <div class="free"><i id="freeBar"></i></div>
+    <div class="note" id="freeTxt"></div>
+    <div class="tot"><span>Итого</span><span id="total">0</span></div>
+    <button class="btn block" id="toCheckout">Оформить заказ</button>
+  </div>
+</aside>
+
+<!-- CHECKOUT -->
+<div class="modal" id="modal">
+  <div class="mbox">
+    <div style="display:flex;justify-content:space-between;align-items:start;gap:10px">
+      <div><h3>Оформление заказа</h3><div class="note">Заказ уйдёт нам в мессенджер, дальше мы подтвердим детали.</div></div>
+      <button class="x" id="closeModal" aria-label="Закрыть">×</button>
+    </div>
+    <form id="form" novalidate>
+      <label class="fld">Имя<input id="fName" required autocomplete="name" placeholder="Как к вам обращаться"></label>
+      <label class="fld">Телефон<input id="fPhone" required type="tel" autocomplete="tel" placeholder="+___ __ ___-__-__"></label>
+      <label class="fld">Получение
+        <select id="fType"><option value="delivery">Доставка</option><option value="pickup">Самовывоз</option></select>
+      </label>
+      <label class="fld" id="addrWrap">Адрес доставки<input id="fAddr" autocomplete="street-address" placeholder="Улица, дом, квартира"></label>
+      <label class="fld">Комментарий<textarea id="fComment" rows="2" placeholder="Удобное время, пожелания"></textarea></label>
+      <div class="sumbox" id="summary"></div>
+      <div class="acts">
+        <button class="btn block" type="submit" id="sendTg">Отправить в Telegram</button>
+        <button class="btn ghost block" type="button" id="copyOrder">Скопировать текст заказа</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* =====================================================
+   НАСТРОЙКИ — замените на свои данные
+   ===================================================== */
+const CONFIG = {
+  brand: "Огурцовъ",                 // название магазина
+  currency: "BYN",                   // валюта: BYN, RUB, USD...
+  telegram: "your_username",         // ник в Telegram без @
+  phone: "+375 00 000-00-00",        // телефон
+  instagram: "",                     // ник в Instagram, можно оставить пустым
+  freeDeliveryFrom: 60,              // бесплатная доставка от суммы (0 — отключить)
+  delivery: [
+    "Доставка по городу: от 1 дня после подтверждения",
+    "Стоимость доставки: 5 BYN, бесплатно от 60 BYN",
+    "Самовывоз: бесплатно, адрес сообщим при подтверждении",
+    "Оплата: наличными или переводом при получении"
+  ]
+};
+
+/* =====================================================
+   ТОВАРЫ — меняйте названия, цены и описания.
+   Чтобы показать фото вместо иллюстрации — добавьте
+   поле img: "photo1.jpg" (файл положите рядом с сайтом).
+   ===================================================== */
+const PRODUCTS = [
+  {id:1, name:"Классические", vol:"0,9 л", price:12, tag:"Хит", color:"#4aa844",
+   desc:"Укроп, чеснок, смородиновый лист и чёрный перец. Тот самый вкус."},
+  {id:2, name:"Острые", vol:"0,9 л", price:13, color:"#c0392b",
+   desc:"С перцем чили и горошком. Для тех, кто любит погорячее."},
+  {id:3, name:"Чесночные", vol:"0,9 л", price:13, color:"#7bb342",
+   desc:"Много чеснока и укропа. Яркий аромат и хруст."},
+  {id:4, name:"Сладко-кислые", vol:"0,9 л", price:14, tag:"Новинка", color:"#d4a017",
+   desc:"Мягкий маринад с лёгкой сладостью и горчичным зерном."},
+  {id:5, name:"Малосольные", vol:"0,5 л", price:9, color:"#6bbf59",
+   desc:"Свежие, лёгкие, быстро съедаются. Хранить в холодильнике."},
+  {id:6, name:"Набор «Попробуй всё»", vol:"3 × 0,5 л", price:26, tag:"Выгодно", color:"#2e7d46",
+   desc:"Три разных вкуса в небольших банках — удобно выбрать любимый."}
+];
+
+/* ====================== ЛОГИКА ====================== */
+const $=s=>document.querySelector(s);
+const money=n=>n.toLocaleString('ru-RU',{maximumFractionDigits:2})+' '+CONFIG.currency;
+
+// бренд, контакты, доставка
+$('#brand').textContent=CONFIG.brand;$('#brand2').textContent=CONFIG.brand;
+document.title=CONFIG.brand+' — маринованные огурцы с доставкой';
+$('#yr').textContent=new Date().getFullYear();
+$('#delList').innerHTML=CONFIG.delivery.map(x=>`<li>${x}</li>`).join('');
+$('#clist').innerHTML=
+  `<a href="https://t.me/${CONFIG.telegram}" target="_blank" rel="noopener">✈️ Telegram @${CONFIG.telegram}</a>`+
+  `<a href="tel:${CONFIG.phone.replace(/[^+\d]/g,'')}">📞 ${CONFIG.phone}</a>`+
+  (CONFIG.instagram?`<a href="https://instagram.com/${CONFIG.instagram}" target="_blank" rel="noopener">📷 Instagram @${CONFIG.instagram}</a>`:'');
+
+// карточки
+function jar(c){return `<svg viewBox="0 0 100 130" aria-hidden="true"><rect x="28" y="6" width="44" height="14" rx="4" fill="#2e7d46"/><path d="M26 22 Q14 28 14 46 L14 108 Q14 122 28 122 L72 122 Q86 122 86 108 L86 46 Q86 28 74 22Z" fill="#fff" stroke="#a9cdb4" stroke-width="2"/><path d="M17 50 H83 V108 Q83 119 72 119 H28 Q17 119 17 108Z" fill="${c}" opacity=".3"/><rect x="28" y="44" width="14" height="70" rx="7" fill="${c}" transform="rotate(-5 35 80)"/><rect x="45" y="40" width="15" height="76" rx="7.5" fill="${c}"/><rect x="63" y="46" width="13" height="68" rx="6.5" fill="${c}" transform="rotate(6 69 80)"/><rect x="30" y="70" width="40" height="22" rx="3" fill="#fffdf6" stroke="#2e7d46"/><path d="M20 52 Q18 80 21 108" stroke="#fff" stroke-width="3" stroke-linecap="round" fill="none" opacity=".8"/></svg>`}
+$('#grid').innerHTML=PRODUCTS.map(p=>`
+<article class="card rv">
+  <div class="pic">${p.tag?`<span class="tagb">${p.tag}</span>`:''}${p.img?`<img src="${p.img}" alt="${p.name}" loading="lazy">`:jar(p.color)}</div>
+  <div class="cb">
+    <h3>${p.name}</h3>
+    <div class="meta">${p.vol}</div>
+    <p>${p.desc}</p>
+    <div class="row"><div class="price">${money(p.price)}</div><button class="add" data-id="${p.id}">В корзину</button></div>
+  </div>
+</article>`).join('');
+
+// корзина (сохраняется в браузере)
+let cart={};
+try{cart=JSON.parse(localStorage.getItem('cart')||'{}')}catch(e){}
+const save=()=>{try{localStorage.setItem('cart',JSON.stringify(cart))}catch(e){}};
+const lines=()=>Object.keys(cart).map(id=>({p:PRODUCTS.find(x=>x.id==id),q:cart[id]})).filter(l=>l.p);
+const total=()=>lines().reduce((s,l)=>s+l.p.price*l.q,0);
+
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2200)}
+
+function render(){
+  const ls=lines(),n=ls.reduce((s,l)=>s+l.q,0),t=total();
+  $('#cnt').textContent=n;$('#total').textContent=money(t);
+  $('#items').innerHTML=ls.length?ls.map(l=>`
+    <div class="it"><div><b>${l.p.name}</b><br><small>${l.p.vol} · ${money(l.p.price)}</small></div>
+      <div class="sum">${money(l.p.price*l.q)}</div>
+      <div class="qty"><button data-m="${l.p.id}" aria-label="Меньше">−</button><span>${l.q}</span><button data-p="${l.p.id}" aria-label="Больше">+</button></div>
+    </div>`).join(''):'<div class="empty">Корзина пока пуста 🥒<br>Добавьте что-нибудь из каталога</div>';
+  const f=CONFIG.freeDeliveryFrom;
+  if(f>0){
+    $('#freeBar').style.width=Math.min(100,t/f*100)+'%';
+    $('#freeTxt').textContent=t>=f?'Бесплатная доставка включена 🎉':`До бесплатной доставки осталось ${money(f-t)}`;
+  }else{$('#freeBar').parentElement.style.display='none';$('#freeTxt').style.display='none'}
+  $('#toCheckout').disabled=!ls.length;$('#toCheckout').style.opacity=ls.length?1:.5;
+}
+$('#grid').addEventListener('click',e=>{
+  const b=e.target.closest('.add');if(!b)return;
+  cart[b.dataset.id]=(cart[b.dataset.id]||0)+1;save();render();
+  const c=$('#openCart');c.classList.remove('bump');void c.offsetWidth;c.classList.add('bump');
+  b.classList.add('ok');b.textContent='Добавлено ✓';setTimeout(()=>{b.classList.remove('ok');b.textContent='В корзину'},1200);
+});
+$('#items').addEventListener('click',e=>{
+  const m=e.target.dataset.m,p=e.target.dataset.p;
+  if(p)cart[p]++;
+  if(m){cart[m]--;if(cart[m]<=0)delete cart[m]}
+  save();render();
+});
+const drawer=v=>{$('#drawer').classList.toggle('open',v);$('#shade').classList.toggle('on',v)};
+$('#openCart').onclick=()=>drawer(true);$('#closeCart').onclick=()=>drawer(false);$('#shade').onclick=()=>drawer(false);
+
+// оформление
+function orderText(){
+  const ls=lines(),t=total();
+  const type=$('#fType').value==='delivery';
+  let s=`Новый заказ — ${CONFIG.brand}\n\n`;
+  s+=ls.map(l=>`• ${l.p.name} (${l.p.vol}) × ${l.q} = ${money(l.p.price*l.q)}`).join('\n');
+  s+=`\n\nИтого: ${money(t)}`;
+  s+=`\nПолучение: ${type?'доставка':'самовывоз'}`;
+  if(type&&$('#fAddr').value.trim())s+=`\nАдрес: ${$('#fAddr').value.trim()}`;
+  s+=`\nИмя: ${$('#fName').value.trim()}\nТелефон: ${$('#fPhone').value.trim()}`;
+  if($('#fComment').value.trim())s+=`\nКомментарий: ${$('#fComment').value.trim()}`;
+  return s;
+}
+function refreshSummary(){
+  $('#summary').textContent=lines().map(l=>`${l.p.name} × ${l.q} — ${money(l.p.price*l.q)}`).join('\n')+`\n\nИтого: ${money(total())}`;
+  $('#addrWrap').style.display=$('#fType').value==='delivery'?'grid':'none';
+}
+$('#toCheckout').onclick=()=>{drawer(false);refreshSummary();$('#modal').classList.add('on')};
+$('#closeModal').onclick=()=>$('#modal').classList.remove('on');
+$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')$('#modal').classList.remove('on')});
+$('#fType').onchange=refreshSummary;
+
+function valid(){
+  let ok=true;
+  const need=[['#fName',v=>v.length>1],['#fPhone',v=>v.replace(/\D/g,'').length>=7]];
+  if($('#fType').value==='delivery')need.push(['#fAddr',v=>v.length>4]);
+  ['#fName','#fPhone','#fAddr'].forEach(s=>$(s).style.borderColor='');
+  need.forEach(([s,f])=>{if(!f($(s).value.trim())){$(s).style.borderColor='#c0392b';ok=false}});
+  if(!ok)toast('Проверьте выделенные поля');
+  return ok;
+}
+function done(){
+  cart={};save();render();$('#modal').classList.remove('on');
+  toast('Спасибо! Мы скоро с вами свяжемся 🥒');
+}
+$('#form').addEventListener('submit',e=>{
+  e.preventDefault();if(!valid())return;
+  window.open(`https://t.me/${CONFIG.telegram}?text=${encodeURIComponent(orderText())}`,'_blank');
+  done();
+});
+$('#copyOrder').onclick=async()=>{
+  if(!valid())return;
+  try{await navigator.clipboard.writeText(orderText());toast('Текст заказа скопирован — отправьте его нам')}
+  catch(e){prompt('Скопируйте текст заказа:',orderText())}
+};
+
+// появление при прокрутке
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4)*70+'ms';io.observe(el)});
+addEventListener('keydown',e=>{if(e.key==='Escape'){drawer(false);$('#modal').classList.remove('on')}});
+render();
+</script>
+</body>
+</html>
